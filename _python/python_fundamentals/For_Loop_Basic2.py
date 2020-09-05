@@ -118,16 +118,17 @@ print(x)
 # Example: reverse_list([37,2,1,-9]) should return [-9,1,2,37]
 def reverse_list(list):
     half_length = int(len(list) / 2)  # typecasting to avoid float number
-
-    for i in range(0,half_length):
+                                                    
+    for i in range(0,half_length):                  
 
         # temp = list[0 + i]
         # list[0 + i] = list[len(list)-1-i]
         # list[len(list)-1-i] = temp
-        list[0 + i], list[len(list)-1-i] = list[len(list)-1-i], list[0 + i]
-        # equal to saying a,b = b,c
+
+        list[0 + i], list[len(list)-1-i] = list[len(list)-1 -i], list[0 + i]
+        #same as saying a,b = b,a
+    
     return list
-x = reverse_list([37,2,1,-9])
-print(x)
+print(reverse_list([37,2,1,-9]))
 
 
