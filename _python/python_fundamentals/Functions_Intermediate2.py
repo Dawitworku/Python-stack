@@ -76,20 +76,20 @@ dojo = {
 }
 def printInfo(some_dict):
 # first way of doing this    
-    # arr = []
-    # for key,val in some_dict.items():   # prints the length of the list in the dictionary
-    #     print(f"{len(val)} {key.upper()}")
-    #     arr=val
-    #     for i in arr:
-    #         print(i)
+    arr = []
+    for key,val in some_dict.items():   # prints the length of the list in the dictionary
+        print(f"{len(val)} {key.upper()}")
+        arr=val
+        for i in arr:
+            print(i)
 #second way of doing this   
-    # for key,val in some_dict.items():   # prints the length of the list thats inside the dictionary
-    #     print(f"{len(val)} {key.upper()}")
-    #     for i in val:
-    #         print(i)   
-# printInfo(dojo)
+    for key,val in some_dict.items():   # prints the length of the list thats inside the dictionary
+        print(f"{len(val)} {key.upper()}")
+        for i in val:
+            print(i)   
+# 3rd way of doing this
 
-    for i in some_dict.keys():   # .keys method will help me wit grabing the keys of the dictionary
+    for i in some_dict:          # .keys method will help me wit grabing the keys of the dictionary
         print(f"{len(some_dict[i])} {i.upper()}")
         for j in some_dict[i]:
             print(j)
