@@ -53,8 +53,9 @@ print(x)
 def length(list):
     return len(list)
 x = length([37,2,1,-9])
-print(x)
 
+print(x)
+print(length([]))
 # 6 Minimum - Create a function that takes a list of numbers and returns the minimum value in the list. If the list is empty, have the function return False.
 # Example: minimum([37,2,1,-9]) should return -9
 # Example: minimum([]) should return False
