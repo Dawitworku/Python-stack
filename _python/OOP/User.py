@@ -25,7 +25,6 @@ Dave.make_deposit(500)
 Dave.make_deposit(500)
 Dave.make_withdrawal(1000)
 Dave.display_user_balance()
-Dave.display_user_balance()
 
 Izzy = User("Izzy", "Izzy@yahoo.com") ## Creating/ Instantiating an object
 Izzy.make_deposit(1500)
