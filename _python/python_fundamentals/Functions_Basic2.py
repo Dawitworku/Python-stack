@@ -51,8 +51,8 @@ def this_length_that_value(size, value):
     for i in range(0, size):
         list.append(i)
         list[i] = value    
+
     return list
 
 x = this_length_that_value(4,7)
 print (x)
-
