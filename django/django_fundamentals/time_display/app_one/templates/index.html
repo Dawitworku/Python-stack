@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Display</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+
+</head>
+<body>
+    <div id = wrapper>
+        <div id= header>
+            <h4>The Current Time and Date:</h4>
+        </div>
+        <div id= t_d>
+            <p>{{date}}</p>
+            <p>{{time}}</p>
+        </div>
+    </div>
+    
+    
+
+</body>
+</html>

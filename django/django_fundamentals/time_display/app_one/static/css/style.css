@@ -1,0 +1,27 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+#wrapper{
+    margin: 0px auto;
+    width: 970px;
+}
+div#header {
+    border: 3px solid black;
+    text-align: center;
+    padding: 10px;
+    width:300px;
+    margin: 40px 0px 30px 220px;
+    font-size: 22px;
+}
+
+div#t_d {
+    border: 4px solid black;
+    text-align: center;
+    width:500px;
+    height: 150px;
+    padding-top: 25px;
+    margin: 40px 0px 30px 130px;
+    box-sizing: border-box;
+    font-size: 30px;
+}
