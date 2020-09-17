@@ -1,0 +1,41 @@
+* {
+    padding: 0px;
+    margin: 0px auto;
+}
+#wrapper {
+    background-color: aqua;
+    width: 970px;
+    height: 650px;
+    padding: 55px 0px 0px 40px;
+    background-image: url('/static/img/background.jpg');
+    
+}
+#form_div {
+    margin-left: 120px;
+    border: 2px solid black;
+    width: 600px;
+    height: 450px;
+    padding: 25px 0px 0px 25px;
+}
+#form_div label, p{
+    font-size: 25px;
+}
+#form_div input, select{
+    border: 2px solid black;
+    height: 20px;
+    background-color: lightgray;
+}
+textarea {
+    background-color: lightgray;
+}
+span {
+    font-size: 20px;
+}
+#wrapper button{
+    background-color:lightblue;
+    width: 80px;
+    height: 30px;
+    margin-left: 220px;
+    border: 1px solid black;
+    border-radius: 4px;
+}

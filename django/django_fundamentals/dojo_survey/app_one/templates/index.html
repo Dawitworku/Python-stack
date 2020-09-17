@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
+</head>
+<body>
+    <div id=wrapper>
+        <div id=form_div>
+
+            <form action="/submission" method="post">  
+                {% csrf_token %}
+                <label for="name">Your Name: </label>
+                <input type="text" id="name" name="name"> <br> <br>
+        
+                <label for="location">Dojo Location: </label>
+                <select id="location" name="location">
+                    <option value="San Jose">San Jose</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Washington">Washington DC</option>
+                    <option value="chicago">Chicago</option>
+                </select>  <br> <br>
+        
+                <label for="language">Favorite Language: </label>
+                <select id="language" name="language">
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Java">Java</option>
+                    <option value="Ruby">Ruby</option>
+                </select> 
+        
+                <br> <br>
+        
+                <p>Comment<span>(optional):</span> </p>
+                <br>
+                <textarea name="comment" rows="6" cols="35"></textarea> <br> <br>
+        
+                <button type="submit" value="Submit">Submit</button>
+        
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
