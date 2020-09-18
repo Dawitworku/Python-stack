@@ -9,10 +9,10 @@
 </head>
 <body>
     <h4>Submitted Info</h4>
-    <p>Name: {{name}}</p>
-    <p>Dojo Location: {{location}}</p>
-    <p>Favorite Language: {{language}}</p>
-    <p>Comment: {{comment}}</p>
+    <p>Name: {{request.session.name}}</p>
+    <p>Dojo Location: {{request.session.location}}</p>
+    <p>Favorite Language: {{request.session.language}}</p>
+    <p>Comment: {{request.session.comment}}</p>
 
     <button type="submit" value="Submit"><a href="/">Go Back</a></button>
 </body>
