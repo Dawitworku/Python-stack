@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Word</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css'%}">
+</head>
+<body>
+    <div id="wrapper">
+        
+        <p>Random Word(attempt <span># </span>{{request.session.counter}})</p>
+
+        <p>{{request.session.ran_word}}</p>
+
+        <button class="buttons" type="submit" value="button"><a href="/random_word">Generate</a></button>
+        
+        <button class="buttons" type="submit" value="button"><a href="/reset">Reset</a></button>
+
+    </div>
+
+
+</body>
+</html> 

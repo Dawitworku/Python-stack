@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    outline: 0;
+}
+#wrapper {
+    margin: 100px auto;
+    width: 970px;
+    background-color: lightgray;
+    height: 400px;
+    padding-top: 50px;
+}
+
+#wrapper p:nth-of-type(1){
+    
+    text-align: center;
+    margin-top: 100px;
+    font-size: larger;
+}
+
+#wrapper p:nth-of-type(2){
+    border: 3px solid black;
+    width: 195px;
+    /* color: blue; */
+    padding: 10px 40px 10px 30px;
+    font-size: 23px;
+    font-weight: 550;
+    text-align: center;
+    margin: 10px 0px 0px 355px;
+}
+#wrapper .buttons {
+    border: 2px solid black;
+    display: block;
+    margin:18px 445px;
+    text-decoration: none ;
+    width: 95px;
+    height:25px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+span{
+    font-weight: bold;
+}
