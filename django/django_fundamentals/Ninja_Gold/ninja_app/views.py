@@ -22,7 +22,7 @@ def process_money(request):
             'house': random.randrange(2, 6),
             'casino': random.randrange(-50, 51),
         }
-
+        
         request.session['gold'] = map[target] + request.session['gold']
         time_stamp = datetime.now().strftime("%Y/%m/%d %I:%M %p")
     

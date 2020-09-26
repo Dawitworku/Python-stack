@@ -1,0 +1,34 @@
+Creating a User--->
+>>> create_user = User.objects.create(first_name="Dave", last_name="Chekol", 				email="dwc99519@marymount.edu", age=27)
+
+>>> create_user = User.objects.create(first_name="Izzy", last_name="Sol", 				email="Izzy99519@marymount.edu", age=30)
+
+>>> User.objects.create(first_name="Ghost", last_name="Husk", 						email="husk99519@marymount.edu", age=33)
+
+retriving all Users--->
+>>> retrive = User.objects.all()
+>>> retrive
+
+Retrieving first and let users --->
+>>> retrive_last_user = User.objects.last()
+>>> retrive_last_user = User.objects.first()
+
+Query: Change the user with id=3 so their last name is Pancakes.-->
+>>> update_user = User.objects.get(id=3)
+>>> update_user.last_name = "Pancakes"
+>>> update_user.save()
+
+Query: Delete the user with id=2 from the database-->
+>>> delete_user = User.objects.get(id=2)
+>>> delete_user.delete()
+
+Query: Get all the users, sorted by their first name-->
+>>> sort_by_fname = User.objects.all().order_by("first_name")
+
+BONUS Query: Get all the users, sorted by their first name in descending order-->
+>>>  User.objects.all().order_by("first_name")
+
+
+
+
+

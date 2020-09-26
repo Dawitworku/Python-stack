@@ -1,0 +1,91 @@
+Query: Create 3 new dojos:
+
+>>> Dojos.objects.create(name="Washington DC", city="Arlington", state="VA")
+<Dojos: Dojos object (1)>
+>>> Dojos.objects.create(name="Dallas", city="Fort Worth", state="TX")
+<Dojos: Dojos object (2)>
+>>> Dojos.objects.create(name="Chicago", city="Downtown", state="IL")
+<Dojos: Dojos object (3)>
+
+Query: Delete the 3 dojos you just created
+>>> delete= Dojos.objects.all()
+>>> delete.delete()
+(3, {'dojo_ninjas_app.Ninjas': 0, 'dojo_ninjas_app.Dojos': 3})
+
+Query: Create 3 more dojos
+>>> Dojos.objects.create(name="Chicago", city="Downtown", state="IL")
+>>> Dojos.objects.create(name="Online", city="Online", state="NA")
+>>> Dojos.objects.create(name="Arlington", city="Arlington", state="VA")
+
+Query: Create 3 ninjas that belong to each dojo
+>>> ninja_1 = Ninjas.objects.create(first_name="Dawit", last_name="Chekol", dojos=d3)
+>>> ninja_2 = Ninjas.objects.create(first_name="Pote", last_name="Sicario", dojos=d3)
+>>> ninja_3 = Ninjas.objects.create(first_name="Javier", last_name="Hernandez", dojos=d3)
+>>> ninja_4 = Ninjas.objects.create(first_name="Boaz", last_name="Javi", dojos=d2)
+>>> ninja_5 = Ninjas.objects.create(first_name="Mb bape", last_name="Cole", dojos=d2)
+>>> ninja_6 = Ninjas.objects.create(first_name="Pele", last_name="Potus", dojos=d2)
+>>> ninja_7 = Ninjas.objects.create(first_name="Jane", last_name="Doe", dojos=d1)
+>>> ninja_8 = Ninjas.objects.create(first_name="John", last_name="Vandame", dojos=d1)
+>>> ninja_9 = Ninjas.objects.create(first_name="James", last_name="Bond", dojos=d1)
+
+Query: Retrieve all the ninjas from the first dojo--->>>
+
+>>> d1 = Dojos.objects.get(id=4)
+>>> d2 = Dojos.objects.get(id=5)
+>>> d3 = Dojos.objects.get(id=6)
+
+first_dojo = Dojos.objects.get(id = 4).    # getting the dojo campus here
+>>> first_dojo.name         # validating if its the correct campus I am trying to query
+'Chicago'
+>>> ninjas_from_first_dojo = Ninjas.objects.filter(dojo= first_dojo)
+>>> ninjas_from_first_dojo
+<QuerySet [<Ninjas: Ninjas object (7)>, <Ninjas: Ninjas object (8)>, <Ninjas: Ninjas object (9)>]>
+
+## Now let's loop through this list/array.
+>>> for ninja in ninjas_from_first_dojo:
+...     print(ninja.first_name, ninja.last_name)
+...
+Jane Doe
+John Vandame
+James Bond
+OR-----
+>>>n_d = Dojos.objects.first().joining_ninjas.all()
+>>> n_d
+<QuerySet [<Ninjas: Ninjas object (7)>, <Ninjas: Ninjas object (8)>, <Ninjas: Ninjas object (9)>]>
+
+Query: Retrieve all the ninjas from the last dojo--->>
+last_dojo = Dojos.objects.get(id=6)
+>>> ninjas_from_last_dojo = Ninjas.objects.filter(dojo = last_dojo)
+>>> for ninja in ninjas_from_last_dojo:
+...     print(ninja.first_name, ninja.last_name)
+...
+Dawit Chekol
+Pote Sicario
+Javier Hernandez
+OR--->>
+ninjas_from_last_dojo = Dojos.objects.last().joining_ninjas.all()
+
+Query: Retrieve the last ninja's dojo--->
+
+>>> last_ninja_dojo = Ninjas.objects.last().dojo.name
+>>> last_ninja_dojo
+'Chicago'
+OR-->>
+>>> last_ninja_dojo = Ninjas.objects.get(id=9).dojo.name
+>>> last_ninja_dojo
+'Chicago'
+>>>
+
+Create a new dojo--->>
+
+ new_dojo = Dojos.objects.create(name="Houston Campus", city = "Houston", state="TX")
+>>> new_dojo.name
+'Houston Campus'
+>>> new_dojo.desc = "This is my description"
+>>> new_dojo.save()
+>>> new_dojo.desc
+'This is my description'
+>>>
+
+
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C + R Users</title>
+    {% load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/User.css'%}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2 id="header">All the Users</h2>
+        <div id="table_div">
+            <table>
+                <tr id="Dark_Grey">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                </tr>
+
+                {% for user in all_users %}
+                <tr class="table_shades">
+                    <th>{{user.id}}</th>
+                    <td>{{user.first_name}} {{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.age}}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+        <!--End of table-->
+        <div id="form_div">
+            <h2>Add a User</h2>
+            <form action="/process" method="post">
+                {% csrf_token %}
+                <label class="align" for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name">
+
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name">
+                        
+                <br><br>
+                <label class="align spacing" for="email">Email</label>
+                <input type="text" id="email" name="email">
+                        
+                <label class="spacing" for="age">Age</label>
+                <input type="text" id="age" name="age">
+                <br><br>
+                        
+                <button type="submit" value="Add">Add</button>
+            </form>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <p><span>***</span> {{message}}</p>
+            {% endfor %}
+        {% endif %}
+            
+    </div>
+</body>
+
+</html>

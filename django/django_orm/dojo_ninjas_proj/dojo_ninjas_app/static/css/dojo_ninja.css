@@ -1,0 +1,81 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+}
+
+#wrapper {
+    width: 970px;
+    /* height: 750px; */
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+#dojo_form {
+    width: 400px;
+    height: 240px;
+    display: inline-block;
+    margin-left: 75px;
+}
+
+#ninja_form {
+    width: 400px;
+    height: 240px;
+    display: inline-block;
+}
+
+h2.headers {
+    text-align: center;
+}
+label {
+    margin-left: 50px;
+    line-height: 30px;
+}
+label#label_1{
+    margin-right: 30px;
+}
+label#label_2{
+    margin-right: 40px;
+}
+label#label_3{
+    margin-right: 36px;
+}
+label.ninja_label {
+    margin-right: 30px;
+}
+label#select_align {
+    margin-right: 70px;
+}
+input, select, button {
+    border: 2px solid black;
+    padding: 2px;
+}
+#activity {
+    margin: 0px auto;
+    padding-top: 50px;
+    width: 850px;
+    height: 565px;
+    border-top: 2px solid black;
+    overflow: scroll;
+}
+#activity h3 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+#dojo_form button {
+    margin-left: 122px;
+}
+#ninja_form button {
+    margin-left: 155px;
+}
+h4.Dojo_Names {
+    display: inline;
+    margin-left: 325px;
+}
+ul.bullet_list {
+    margin-left: 365px;
+    list-style-type: circle;
+}
+.hover_style:hover {
+    background-color: red;
+}

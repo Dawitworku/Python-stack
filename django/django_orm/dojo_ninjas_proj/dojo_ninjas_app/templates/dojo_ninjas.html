@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos & Ninjas</title>
+    {% load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dojo_ninja.css'%}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="dojo_form">
+            <h2 class="headers">Add a Dojo</h2>
+            <form action="/process_1" method="post">
+                {% csrf_token %}
+                <label id="label_1" for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label id="label_2" for="city">City</label>
+                <input type="text" id="city" name="city">
+                <br>
+                <label id="label_3" for="state">State</label>
+                <input type="text" id="state" name="state">
+                <br>
+                <button type="submit" value="Add_dojo" name="action">Add</button>
+            </form>
+        </div>
+        <div id="ninja_form">
+            <h2 class="headers">Add a Ninja</h2>
+            <form action="/process_2" method="post">
+                {% csrf_token %}
+                <label class="ninja_label" for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name">
+                <br>
+                <label class="ninja_label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name">
+                <br>
+                <label id="select_align" for="dojo">Dojo</label>
+                <select name="dojo" id="dojo" placeholder="select a dojo" required>
+                <option value="" disabled selected>-Select a dojo</option>
+                {% for dojo in all_existing_dojos %}
+                    <option value="{{dojo.name}}">{{dojo.name}}</option>
+                {% endfor %}
+                </select>
+                <br>
+                <button type="submit" value="Add_ninja" name="action">Add</button>
+            </form>
+        </div>
+        <div id="activity">
+            <h3>All the Dojos</h3>
+            {% for dojo in all_existing_dojos %}
+                <h4 class="Dojo_Names" >{{dojo.joining_ninjas.all|length}} - Ninjas at the-{{dojo.name|capfirst}}</h4>
+                <!-- <form action="/delete" method="post">
+                {% csrf_token %}
+                    <button type="submit" value="{{dojo.name}}" name="delete">Delete</button>
+                </form> -->
+                <a href="/delete/{{dojo.id}}"><button class="hover_style">Delete</button></a>
+                <ul class="bullet_list" >
+                {% for ninja in dojo.joining_ninjas.all %}
+                    <li>{{ninja.first_name}}</li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+
+        </div>
+    </div>
+</body>
+
+</html>

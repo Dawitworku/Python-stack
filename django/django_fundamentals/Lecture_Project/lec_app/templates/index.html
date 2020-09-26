@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture_Project</title>
+</head>
+<body>
+    {{all_dragons}}
+
+    {% for dragon in all_dragons %}
+        {% if dragon.name == "Lucy" %}
+            <p>Top Secret Name, Secret Agent</p>
+        {% else %}
+            <p>{{dragon.name}}</p>
+        {% endif %}
+    {% endfor %}
+
+<p><strong>Wizards form Harry Potter</strong></p>
+{% for house in filter %}
+    <p>{{house.name}} --House: {{house.house}} Pet: {{house.pet}}: Year: {{house.year}}</p>
+{% endfor %} 
+
+</body>
+</html>
