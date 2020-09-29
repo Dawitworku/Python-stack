@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/books_authors.css' %}">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="main-content">
+            <h2>{{book.title}}</h2>
+            <p>ID: {{book.id}}</p>
+            <p class="spacing">Description: {{book.desc}}</p>
+            <p>Authors:</p>
+            {% for author in book.authors.all %}
+            <ul class="list-aligner">
+                <li>{{author.first_name}} {{author.last_name}}</li>
+            </ul>
+            {% endfor %}
+        </div>
+
+        <div class="adding-form">
+            <form action="/assign_author/{{book.id}}" method="post">
+                {% csrf_token %}
+                <label class="select_label" for="author_id">Add Author</label>
+                <select class="select-aligner" name="author_id" id="author_id" required>
+                    <option value="" disabled selected>-Select an author</option>
+                    {% for author in authors_not_contributors_for_this_book_filter %}
+                        <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                    {% endfor %}
+                </select>
+                
+                <button type="submit" value="Add_author" name="action">Add</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

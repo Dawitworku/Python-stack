@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/books_authors.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h2>{{author.first_name}} {{author.last_name}}</h2>
+            <p>ID: {{author.id}}</p>
+            <p class="spacing">Notes: {{author.notes}}</p>
+            <p>Books:</p>
+            {% for book in author.books.all %}
+            <ul class="list-aligner">
+                <li>{{book.title}}</li>
+            </ul>
+            {% endfor %}
+        </div>
+
+
+
+
+        <div class="adding-form">
+            <form action="/assign_book/{{author.id}}" method="post">
+                {% csrf_token %}
+                <label class="select_label" for="book_id">Add Book</label>
+                <select class="select-aligner" name="book_id" id="book_id" required>
+                    <option value="" disabled selected>- Select a book</option>
+                    {% for book in books_not_by_this_author_filter %}
+                    <option value="{{book.id}}">{{book.title}}</option>
+                    {% endfor %}
+                </select>
+                
+                <button type="submit" value="Add_book" name="action">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

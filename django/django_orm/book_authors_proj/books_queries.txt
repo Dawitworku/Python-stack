@@ -1,0 +1,99 @@
+Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby
+
+book1 = Book.objects.create(title="C Sharp", desc="C Sharp is a highly sought out programming language for Game Development")
+
+>>> book2 = Book.objects.create(title="Java", desc="Java is one of the oldest but still famous and popular programming languge that uses the JVM tool to perfomr without having to re-translate codes")
+
+>>> book3 = Book.objects.create(title="Python", desc="Python is easier to read, write and understand than other programming languges")
+
+>>> book4 = Book.objects.create(title="PHP", desc="I dont know much about PHP ")
+
+>>> book5 = Book.objects.create(title="Ruby", desc="Ruby is beginner freindly")
+
+Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevksy, William Shakespeare, Lau Tzu
+
+>>> author1= Author.objects.create(first_name="Jane", last_name="Austen")
+>>> author2= Author.objects.create(first_name="Emilly", last_name="Dickinson")
+>>> author3= Author.objects.create(first_name="Fyodor", last_name="Dostoevksy")
+>>> author4= Author.objects.create(first_name="William", last_name="Shakespeare")
+>>> author5= Author.objects.create(first_name="Lau", last_name="Tzu")
+
+Change the name of the C Sharp book to C#
+
+book1.title = "C#"
+>>> book1.save()
+>>> book1.title
+'C#'
+
+Change the first name of the 4th author to Bill
+
+>>> author4.first_name
+'William'
+>>> author4.first_name = "Bill"
+>>> author4.save()
+
+Assign the first author to the first 2 books
+
+>>> author1.books.add(book1, book2)
+
+Assign the second author to the first 3 books
+
+>>> book1.authors.add(author2)
+>>> author2.books.add(book2, book3)
+
+Assign the third author to the first 4 books
+
+>>> author3.books.add(book1, book2, book3, book4)
+
+Assign the fourth author to the first 5 books (or in other words, all the books)
+
+>>> author4.books.add(book1, book2, book3, book4, book5)
+
+Retrieve all the authors for the 3rd book
+
+>>> authors_for_3rd_book = book3.authors.all()
+>>> for author in authors_for_3rd_book:
+...     print(author.first_name)
+...
+Emilly
+Fyodor
+Bill
+>>>
+
+Remove the first author of the 3rd book
+
+>>> book3.authors.remove(author2)
+
+Add the 5th author as one of the authors of the 2nd book
+
+>>> author5.books.add(book2)
+
+Find all the books that the 3rd author is part of
+
+>>> books_from_author3 = author3.books.all()
+>>> for books in books_from_author3:
+...     print(books.title)
+...
+C#
+Java
+Python
+PHP
+
+Find all the authors that contributed to the 5th book
+
+>>> authors_for_book = book5.authors.all()
+>>> for authors in authors_for_book:
+...     print(authors.first_name, authors.last_name)
+...
+Bill Shakespeare
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/books_authors.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <h2 class="header">Add an Author</h2>
+
+        <div class="create_form" id= authors_form>
+            <form action="/authors_page" method="post">
+                {% csrf_token %}
+                <label for="first_name">First Name</label>
+                <input class="input-adj" type="text" id="first_name" name="first_name" required>
+                <br>
+                <label for="last_name">Last Name</label>
+                <input class="input-adj" type="text" id="last_name" name="last_name" required>
+                <br>
+                <label id="label_2" for="notes">Notes</label>
+                <textarea id="notes" name="notes" rows="5" cols="16"></textarea>
+                <br>
+                <button type="submit" value="Add_author" name="action">Add</button>
+            </form>
+            <p>To add or view the list of books</p>
+            <a href="/"><button>Click here</button></a>
+        </div>
+
+        <div class="table_div" id="authors_table">
+            <table>
+                <tr id="Dark_Grey">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                {% for author in all_authors %}
+                    <tr class="table_shades">
+                        <th>{{author.id}}</th>
+                        <td>{{author.first_name}} {{author.last_name}}</td>
+                        <td><a href="/authors/{{author.id}}">View</a></td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
