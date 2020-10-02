@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit a Dog</title>
+</head>
+<body>
+
+    <h1>Edit {{one_dog.name}}</h1>
+    <form action="/dogs/{{one_dog.id}}/update" method="post">
+        {% csrf_token %}
+        Name: <input type="text" name="dog_name" value="{{one_dog.name}}">
+        Age: <input type="text" name="dog_age" value= "{{one_dog.age}}">
+        <input type="submit" value="Edit a Dog" />
+</body>
+</html>

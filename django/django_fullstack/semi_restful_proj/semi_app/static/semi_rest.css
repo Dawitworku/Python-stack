@@ -1,0 +1,95 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+}
+
+#wrapper {
+    width: 970px;
+    height: 700px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    /* border: 1px solid red; */
+}
+
+#table_div {
+    width: 720px;
+    height: 500px;
+    /* border: 1px solid black; */
+    margin-top: 50px;
+    overflow: auto;
+}
+
+#table_div table {
+    width: 700px;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+#table_div th,
+#table_div td {
+    border-right: 2px solid black;
+    padding: 10px;
+}
+
+.form_display {
+    display: inline;
+}
+
+#show_shows_wrapper {
+    width: 970px;
+    padding: 40px;
+}
+
+.go_back_alignment {
+    position: relative;
+    left: 640px;
+}
+
+#show_shows_wrapper h2 {
+    margin-block-end: 50px;
+}
+
+#show_shows_wrapper p {
+    margin-bottom: 20px;
+}
+
+#show_shows_wrapper p:nth-of-type(4) {
+    margin-bottom: 180px;
+}
+
+.add_edit_form_wrapper {
+    margin-left: 125px;
+    margin-top: 65px;
+}
+
+.add_edit_form_wrapper input {
+    border: 2px solid black;
+}
+
+.input_1 {
+    width: 460px;
+    
+}
+
+.input_2 {
+    position: relative;
+    top: 30px;
+    left: -70px;
+    width: 190px;
+}
+
+.input_3 {
+    position: relative;
+    top: 30px;
+    left: -102px;
+    width: 190px;
+}
+textarea.description {
+    width: 460px;
+    border: 2px solid black;
+    
+}
+.btn-aligner {
+    margin: 20px 200px;
+}

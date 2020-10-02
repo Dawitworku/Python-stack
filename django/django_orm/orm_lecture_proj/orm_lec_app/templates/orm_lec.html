@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORM Lecture_Project</title>
+</head>
+<body>
+    <p>CRUD App</p>
+    <a href="/dogs/new">Create a Dog</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+        {% for dog in all_dogs %}
+        <tr>
+            <td>{{dog.id}}</td>
+            <td>{{dog.name}}</td>
+            <td>{{dog.age}}</td>
+            <td>
+                <a href="/dogs/{{dog.id}}">Show</a>
+
+                <a href="/dogs/{{dog.id}}/edit">Edit</a>
+
+                <form action="/dogs/{{dog.id}}/destroy" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+
+                </form>
+                <a href=""></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Shows</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'semi_rest.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div id="show_shows_wrapper">
+
+        <a href="/shows/"><button type="button" class="btn btn-secondary btn-sm go_back_alignment">Go Back</button></a>
+        
+        <h2>TV Show {{a_show.id}}</h2>
+
+        <p>Title: {{a_show.title}}</p>
+        <p>Network: {{a_show.network}}</p>
+        <p> Release Date: {{a_show.release_date}}</p>
+        <p>Description: {{a_show.description}}</p>
+
+
+        <p>Last Updated: {{a_show.updated_at}}</p>
+        <a href="/shows/{{a_show.id}}/edit"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button></a>
+
+        
+        <form action="/shows/{{a_show.id}}/destroy" method="post" class= form_display>
+            {% csrf_token %}
+            <button type="button" class="btn btn-outline-warning btn-sm">Delete</button>
+        </form>
+        
+    </div>
+</body>
+</html>
