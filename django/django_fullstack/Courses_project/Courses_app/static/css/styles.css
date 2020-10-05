@@ -1,0 +1,90 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    outline: 0px;
+}
+#wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+#form_div {
+    height: 260px;
+}
+#wrapper h3{
+    margin-left: 50px;
+}
+#form_div #title {
+    margin-left: 40px;
+    border: 2px solid black;
+    width: 420px;
+}
+#form_div #desc_alignment {
+    vertical-align: top;
+}
+#form_div #description {
+    border: 2px solid black;
+}
+#form_div button {
+    margin-left: 467px;
+    border: 2px solid black;
+}
+.messages .error {
+    color: red;
+    font-size: 13px;
+    position: relative;
+    left: 595px;
+    top: 74px;
+    margin-bottom: 15px;
+}
+#table_div {
+    height: 425px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+#table_div table {
+    border: 2px solid black;
+    width:100%;
+    border-collapse: collapse;
+}
+#table_div th, td {
+    border-right: 2px solid black;
+    padding: 5px;
+}
+#table_div th {
+    background-color:#878787;
+}
+.table_shades:nth-child(even) {
+    background-color: rgb(238, 238, 238);
+}
+#comment-container {
+    margin-top: 50px;
+}
+#go_back_button {
+    margin-left: 600px;
+}
+#comment_label {
+    vertical-align: top;
+    margin-right:11px;
+}
+#form_div #comment {
+    border: 2px solid black;
+}
+#comment_list {
+    height: 400px;
+    box-sizing: border-box;
+    overflow: auto;
+    padding-left: 20px;
+}
+#comment_list ul {
+    margin-left: 90px;
+}
+#container-delete {
+    padding: 80px;
+}
+#form-alignment {
+    display: inline-block;
+    margin-left: 20px;
+}
+#container-delete .btn {
+    border: 2px solid black;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div id="comment-container">
+       
+        <a id="go_back_button" href="/"><button type="submit" class="btn btn-secondary">Go Back</button></a>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{message.tags}}" {% endif %}>
+                {{message}}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div id="form_div">
+
+            <form action="/create_comment/{{this_course.id}}" method="post">
+                {% csrf_token %}
+                
+                <label id="comment_label" for="comment">Add Comment:</label>
+                <textarea id="comment" name="comment" rows="5" cols="50"></textarea>
+                <br>
+                <button name="add" value="add" class="btn btn-success btn-sm">Add</button>
+            </form>
+        </div>
+
+        <div id="comment_list">
+            <h3>Comments</h3>
+            <p><strong>Course:</strong> {{this_course.name}}</p>
+            {% for comment in this_course.comments.all %}
+                <ul>
+                    <li>{{comment.course_comment}}
+                </ul>
+            {% endfor %}
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+</body>
+</html>
