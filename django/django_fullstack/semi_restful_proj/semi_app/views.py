@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.contrib import messages  # Importing messages framework here
 from .models import Show
 
 # Create your views here.
@@ -10,19 +11,30 @@ def all_shows(request):
     return render(request, 'all_shows.html', context)
 
 def new_show(request):
-    context = {
-
-    }
+    
     return render(request, 'add_show.html')
 
 def create_show(request):
     if request.method == "POST":
-        print(request.POST)  ###### ##############To be deleted
-        # Create the show in the DB
-        this_show = Show.objects.create(title=request.POST['title'], network=request.POST['network'], release_date= request.POST['release_date'], description= request.POST['description'])
-        # Grabbing the ID of the show after creating to redirect to the shows page right away.
-        id = this_show.id
-    return redirect(f'/shows/{id}')
+        errors = Show.objects.show_validator(request.POST) # passing the post date to the validator
+        if len(errors) > 0:  # checking if there is any errors.
+            for key,value in errors.items():
+                messages.error(request, value)
+            return redirect('/shows/new')
+    # VALIDATING IF A TITLE EXISTS
+        if Show.objects.filter(title__iexact= request.POST['title']).exists():
+            #creating a messsage to be displayed it we enter a title that already exists in the DB
+            messages.error(request, "This title already exists")
+            return redirect(f'/shows/new')
+
+        else: # if everything is good and no errors -->
+            # Create the show in the DB
+            this_show = Show.objects.create(title=request.POST['title'], network=request.POST['network'], release_date= request.POST['release_date'], description= request.POST['description'])
+            # Grabbing the ID of the show after creating to redirect to the shows page right away.
+            messages.success(request, "Show successfully created")
+
+            id = this_show.id
+            return redirect(f'/shows/{id}')
 
 def show_shows(request, id):
     context = {
@@ -40,14 +52,25 @@ def edit_show(request, id):
 
 def update(request, id):
     if request.method == "POST":
-        # Grabbing a show to be updated by the ID
-        show_to_be_updated = Show.objects.get(id = id)
+        errors = Show.objects.show_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect(f'/shows/{id}/edit')
 
-        show_to_be_updated.title = request.POST['title']
-        show_to_be_updated.network = request.POST['network']
-        show_to_be_updated.release_date = request.POST['release_date']
-        show_to_be_updated.description = request.POST['description']
-        show_to_be_updated.save()
+        target = Show.objects.get(id = id)
+        if request.POST['title'] == target.title: # comparing a title here
+            #creating a messsage to be displayed it we enter a title that already exists in the DB
+            messages.info(request, "This title already exists")
+            return redirect(f'/shows/{id}/edit')
+        else:   
+        # Grabbing a show to be updated by the ID
+            show_to_be_updated = Show.objects.get(id = id)
+            show_to_be_updated.title = request.POST['title']
+            show_to_be_updated.network = request.POST['network']
+            show_to_be_updated.release_date = request.POST['release_date']
+            show_to_be_updated.description = request.POST['description']
+            show_to_be_updated.save()
 
     return redirect(f'/shows/{id}')
 
