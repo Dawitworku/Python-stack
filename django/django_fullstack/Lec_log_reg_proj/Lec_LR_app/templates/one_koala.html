@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Profile</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{message.tags}}" {% endif %}>
+            {{message}}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <h1>Name: {{koala.name}}</h1>
+    <h2>Talent: {{koala.talent}}</h2>
+    <h2>Owner's Name: {{koala.user.name}}</h2>
+    <a href="/main_page">Home</a>
+</body>
+</html>
