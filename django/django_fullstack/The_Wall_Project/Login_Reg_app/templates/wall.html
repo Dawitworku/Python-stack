@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall Page</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="container">
+
+        <nav class="navbar navbar-dark bg-primary">
+            <img src="/static/img/download.png" width="30" height="30" class="d-inline-block align-top" alt="Logo"
+                loading="lazy">
+            <h7 class="navbar-brand col">CodingDojo Wall</h7>
+            <h7 class="navbar-brand  px-md-5">Welcome {{user.first_name}}</h7>
+            <a class="navbar-brand link-color" style="color: #06548c;" href="/logout">Log Off</a>
+        </nav>
+        <!-- Displaying a message -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div id="Main-content">
+            <!-- Form for posting a message -->
+            <form action="/post_message" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="post">Post a message</label>
+                    <textarea class="form-control col-7" name="post" id="post"></textarea>
+                    <button type="submit" class="btn btn-primary btn-sm " id="post_btn_position">Post a message</button>
+                </div>
+            </form>
+
+            {% for message in most_recent_message %}
+                <!-- Displaying user name and date the message was posted -->
+                <p class="user-name-display">{{message.user.first_name}} {{message.user.last_name}}-
+                {{message.created_at|date:'F jS Y, fa'}}</p>
+                <!-- form to delete a message. Only show the delete button only on user posted messages-->  
+                {% if request.session.user_id == message.user.id %}
+                    <form action="wall/delete_message/{{message.id}}" class="display-delete" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="delete" class="btn btn-light btn-sm">
+                    </form>
+                {% endif %}
+                <!-- Displaying the messages -->
+                <p class="message-display">{{message.messages}}</p>
+                <!-- Counting the number of likes -->
+                <p id="like_counter">{{message.liker_user.all|length}}<span> likes</span></p>
+                <!-- Form for message likes -->
+                <!-- checking if a user is in a collection of likes using many to many attribute -->
+                {% if user not in message.liker_user.all %}
+                    <form action="/wall/message_like/{{message.id}}" class="like_unlike_display" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="like" class="btn btn-link btn-sm">
+                    </form>
+                    <!-- checking if a user is in a collection of likes using manytomany attribute -->
+                {% elif user in message.liker_user.all %} 
+                    <form action="/wall/message_unlike/{{message.id}}" class="like_unlike_display" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="unlike" class="btn btn-link btn-sm" id="red">
+                    </form>
+                {% endif %}
+                
+                {% for comment in message.comments.all reversed %}
+                    <!-- Displaying the date and name of the commenter -->
+                    <p class="commenter-display display-prop">{{comment.user.first_name}} {{comment.user.last_name}}- {{comment.created_at|date:'F jS Y, fa'}}</p>
+                    <!-- Form to delete a comment -->
+                    {% if request.session.user_id == comment.user.id %}<!--Allowing only the user to delete only their own message -->
+                        <form action="wall/delete_comment/{{comment.id}}" class="display-delete" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="delete" class="btn btn-light btn-sm">
+                        </form>
+                    {% endif %}
+
+                    <p class="commenter-display font-size">Commented on {{message.user.first_name}}'s message:</p>
+                    <!-- Displaying the comment -->
+                    <p class="comment">{{comment.comment}}</p>
+                {% endfor %}
+                    <!-- Form to add a comment -->
+                    <form action="/post_comment/{{message.id}}" class="display-delete" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group comment-text-area">
+                            <textarea class="form-control col-6" name="comment" id="post"
+                                placeholder="Add a comment"></textarea>
+                            <button type="submit" class="btn btn-outline-success btn-sm">comment</button>
+                        </div>
+                    </form>
+            {% endfor %}
+
+        </div>
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>
+
+
+<!-- {# for user in all_users #}
+                <p>{{user.first_name}} {{user.last_name}}- {{user.created_at|date:'F jS Y, fa'}}</p>
+                {# for message in user.messages.all #}
+                    <p>{{message.messages}}</p>
+                {# endfor #}
+            {# endfor #} -->

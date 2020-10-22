@@ -1,0 +1,118 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+}
+
+#wrapper {
+    padding: 120px 0px 0px 60px;
+    height: 900px;
+    background-image: url("/static/img/new4.jpg");
+    background-image: content;
+    background-size: cover;
+    ;
+}
+
+#display_1 {
+    display: inline-block;
+    margin-right: 50px;
+}
+
+#display_2 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.error {
+    color: red;
+    list-style: none;
+}
+
+.success {
+    color: green;
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+#container {
+    /* padding: 30px; */
+
+}
+
+.font {
+    font-family: emoji;
+}
+
+#Main-content {
+    margin-top: 30px;
+    margin-left: 150px;
+    margin-right: 100px;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+
+.user-name-display {
+    font-weight: bold;
+    display: inline;
+}
+
+.message-display {
+    padding-left: 30px;
+}
+
+.commenter-display {
+    padding-left: 50px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    
+}
+
+.display-prop {
+    display: inline;
+}
+
+.font-size {
+    font-weight: normal;
+    font-size: 13px;
+    color: gray;
+}
+
+.comment {
+    margin-left: 53px;
+    padding-top: -3px;
+    border-left: 2px solid lightgray;
+    padding-left: 8px;
+}
+
+.comment-text-area {
+    margin-left: 53px;
+}
+
+.display-delete {
+    display: inline;
+}
+
+.btn-light {
+    margin-left: 100px;
+}
+
+.like-btn {
+    display: block;
+}
+
+.like_unlike_display {
+    margin-top: -37px;
+    margin-left: 100px;
+}
+#red {
+    color: red;
+}
+
+#like_counter {
+    display: inline;
+    margin-left: 20px;
+    font-size: 13px;
+}
