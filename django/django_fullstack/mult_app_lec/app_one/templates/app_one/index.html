@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App_One</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+
+</head>
+
+<body>
+    <h1>App_one</h1>
+
+    <a href="/two">To Two</a>
+
+    <form action="/one/create_user" method="post">
+        {% csrf_token %}
+        <input type="text" name="user_name">
+        <input type="submit" value="Create User">
+    </form>
+    <table id="wrestlers">
+        <tr>
+            <th>Name</th>
+        </tr>
+        {% for user in all_users %}
+        <tr>
+            <td>{{ user.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'app_one.js' %}"></script>
+</body>
+
+</html>

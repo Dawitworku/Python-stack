@@ -1,0 +1,11 @@
+
+<table id="wrestlers">
+    <tr>
+        <th>Name</th>
+    </tr>
+    {% for user in all_users %}
+    <tr>
+        <td>{{ user.name }}</td>
+    </tr>
+    {% endfor %}
+</table>

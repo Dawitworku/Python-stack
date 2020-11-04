@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App_Two</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+</head>
+
+<body>
+    <h1>App_Two</h1>
+    <a href="/one">To One</href>
+        <!-- {% for user in all_users %}
+        <p>{{user.name}}</p>
+        {% endfor %} -->
+    
+    <div id="pokedex"></div>
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{% static 'app_two.js' %}"></script>
+
+</body>
+
+</html>
